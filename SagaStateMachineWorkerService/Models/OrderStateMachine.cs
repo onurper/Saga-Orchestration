@@ -45,6 +45,7 @@ namespace SagaStateMachineWorkerService.Models
                 .Send(new Uri($"queue:{RabbitMQSettingsConst.PaymentStockReservedRequestQueueName}"), context => new StockReservedRequestPayment(context.Instance.CorrelationId)
                 {
                     OrderItemMessages = context.Data.OrderItems,
+                    BuyerId = context.Instance.BuyerId,
                     PaymentMessage = new PaymentMessage()
                     {
                         CardName = context.Instance.CardName,

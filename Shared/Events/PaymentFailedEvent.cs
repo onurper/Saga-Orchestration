@@ -1,19 +1,21 @@
 ﻿using Shared.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Shared.Events
 {
-    public class StockReservedRequestPayment : IStockReservedRequestPayment
+    public class PaymentFailedEvent : IPaymentFailedEvent
     {
-        public PaymentMessage PaymentMessage { get; set; }
+        public string Message { get; set; }
 
         public List<OrderItemMessage> OrderItemMessages { get; set; }
 
         public Guid CorrelationId { get; }
-        public string BuyerId { get; set; }
 
-        public StockReservedRequestPayment(Guid correlationId)
+        public PaymentFailedEvent(Guid correlationId)
         {
             CorrelationId = correlationId;
         }
